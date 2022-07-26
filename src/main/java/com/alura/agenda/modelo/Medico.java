@@ -1,5 +1,6 @@
 package com.alura.agenda.modelo;
 
+import com.alura.agenda.dto.AtualizacaoMedicoFormDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +13,6 @@ import java.sql.Time;
 @ToString
 @Entity
 @Table(name = "medicos")
-
 public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +28,13 @@ public class Medico {
     @ManyToOne
     private Endereco endereco;
 
+    public void atualizarInformacoes(AtualizacaoMedicoFormDto dto) {
+        this.nome = dto.getNome();
+        this.email = dto.getEmail();
+        this.telefone = dto.getTelefone();
+        this.crm = dto.getCrm();
+        this.horarioAbertura = Time.valueOf(dto.getHorarioAbertura());
+        this.horarioFechamento = Time.valueOf(dto.getHorarioFechamento());
+        this.endereco = new Endereco(dto.getEndereco());
+    }
 }

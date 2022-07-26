@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS pacientes (
-    id bigint NOT NULL,
+    id bigint NOT NULL AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
     email VARCHAR(45) NOT NULL,
     telefone VARCHAR(15) NOT NULL,

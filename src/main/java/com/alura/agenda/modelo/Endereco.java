@@ -1,9 +1,9 @@
 package com.alura.agenda.modelo;
 
+import com.alura.agenda.dto.EnderecoFormDto;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Time;
 
 @Getter
 @AllArgsConstructor
@@ -12,7 +12,6 @@ import java.sql.Time;
 @ToString
 @Entity
 @Table(name = "enderecos")
-
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +20,24 @@ public class Endereco {
     private String numero;
     private String bairro;
     private String cidade;
-    private char uf;
+    private String uf;
     private Integer cep;
+
+    public Endereco(EnderecoFormDto dto) {
+        this.logradouro = dto.getLogradouro();
+        this.numero = dto.getNumero();
+        this.bairro = dto.getBairro();
+        this.cidade = dto.getCidade();
+        this.uf = dto.getUf();
+        this.cep = dto.getCep();
+    }
+
+    public void atualizarInformacoes(EnderecoFormDto endereco) {
+        this.logradouro = endereco.getLogradouro();
+        this.numero = endereco.getNumero();
+        this.bairro = endereco.getBairro();
+        this.cidade = endereco.getCidade();
+        this.uf = endereco.getUf();
+        this.cep = endereco.getCep();
+    }
 }

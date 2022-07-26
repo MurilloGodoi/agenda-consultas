@@ -1,20 +1,18 @@
 package com.alura.agenda.dto;
 
-import com.alura.agenda.modelo.Endereco;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PacienteDto {
+public class AtualizacaoPacienteFormDto extends PacienteFormDto {
+    @NotNull
     private Long id;
-    private String nome;
-    private String email;
-    private String telefone;
-    private String cpf;
-    private Endereco endereco;
 }
+

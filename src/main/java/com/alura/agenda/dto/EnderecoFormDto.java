@@ -1,26 +1,27 @@
 package com.alura.agenda.dto;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import javax.validation.constraints.NotNull;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ConsultaFormDto {
-    @JsonAlias("paciente_id")
+@Setter
+public class EnderecoFormDto {
     @NotNull
-    private Long idPaciente;
-    @JsonAlias("medico_id")
-    private Long idMedico;
+    private String logradouro;
     @NotNull
-    private String dia;
+    private String numero;
     @NotNull
-    private String descricao;
+    private String bairro;
+    @NotNull
+    private String cidade;
+    @NotNull
+    private String uf;
+    @NotNull
+    private Integer cep;
 }
