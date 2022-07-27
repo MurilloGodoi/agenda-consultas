@@ -22,7 +22,7 @@ public class Paciente {
     private String email;
     private String telefone;
     private String cpf;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.MERGE)
     private Endereco endereco;
 
     public void atualizarInformacoes(AtualizacaoPacienteFormDto dto) {
@@ -30,6 +30,6 @@ public class Paciente {
         this.email = dto.getEmail();
         this.telefone = dto.getTelefone();
         this.cpf = dto.getCpf();
-        this.endereco = new Endereco(dto.getEndereco());
+        this.endereco = dto.getEndereco();
     }
 }

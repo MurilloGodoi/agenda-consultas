@@ -50,11 +50,9 @@ public class MedicoService {
     @Transactional
     public MedicoDto atualizar(AtualizacaoMedicoFormDto dto) {
         Medico medico = medicoRepository.findById(dto.getId()).orElseThrow(() -> new EntityNotFoundException());
-        Endereco endereco = enderecoRepository.findById(medico.getEndereco().getId()).orElseThrow(() -> new EntityNotFoundException());
         medico.atualizarInformacoes(dto);
-        endereco.atualizarInformacoes(dto.getEndereco());
-        enderecoService.cadastrar(dto.getEndereco());
-        return modelMapper.map(medicoRepository.save(medico), MedicoDto.class);
+        medicoRepository.save(medico);
+        return modelMapper.map(medico, MedicoDto.class);
     }
 
     @Transactional

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Time;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ public class MedicoDto {
     private String email;
     private String telefone;
     private String crm;
-    private Time horarioAbertura;
-    private Time horarioFechamento;
+    private LocalTime horarioAbertura;
+    private LocalTime horarioFechamento;
     private Endereco endereco;
 }

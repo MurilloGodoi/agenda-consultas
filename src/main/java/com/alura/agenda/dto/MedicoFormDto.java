@@ -2,12 +2,14 @@ package com.alura.agenda.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -24,10 +26,12 @@ public class MedicoFormDto {
     private String crm;
     @JsonAlias("horario_abertura")
     @NotNull
-    private String horarioAbertura;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
+    private LocalTime horarioAbertura;
     @JsonAlias("horario_fechamento")
     @NotNull
-    private String horarioFechamento;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
+    private LocalTime horarioFechamento;
     @NotNull
     private EnderecoFormDto endereco;
 }

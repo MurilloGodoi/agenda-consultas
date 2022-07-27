@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS consultas (
     id bigint NOT NULL AUTO_INCREMENT,
-    dia DATETIME NOT NULL,
+    dia TIMESTAMP NOT NULL,
     descricao VARCHAR(45) NOT NULL,
     status VARCHAR(45) NOT NULL,
     medico_id bigint NOT NULL,

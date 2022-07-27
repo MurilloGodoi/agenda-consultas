@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalTime;
 
 @Getter
 @AllArgsConstructor
@@ -22,10 +23,10 @@ public class Medico {
     private String telefone;
     private String crm;
     @Column(name = "horario_abertura")
-    private Time horarioAbertura;
+    private LocalTime horarioAbertura;
     @Column(name = "horario_fechamento")
-    private Time horarioFechamento;
-    @ManyToOne
+    private LocalTime horarioFechamento;
+    @ManyToOne(cascade=CascadeType.MERGE)
     private Endereco endereco;
 
     public void atualizarInformacoes(AtualizacaoMedicoFormDto dto) {
@@ -33,8 +34,8 @@ public class Medico {
         this.email = dto.getEmail();
         this.telefone = dto.getTelefone();
         this.crm = dto.getCrm();
-        this.horarioAbertura = Time.valueOf(dto.getHorarioAbertura());
-        this.horarioFechamento = Time.valueOf(dto.getHorarioFechamento());
-        this.endereco = new Endereco(dto.getEndereco());
+        this.horarioAbertura = LocalTime.parse(dto.getHorarioAbertura());
+        this.horarioFechamento = LocalTime.parse(dto.getHorarioFechamento());
+        this.endereco = dto.getEndereco();
     }
 }

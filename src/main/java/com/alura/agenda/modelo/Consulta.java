@@ -1,6 +1,7 @@
 package com.alura.agenda.modelo;
 
 import java.sql.Timestamp;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Consulta {
     private Long id;
     private Timestamp dia;
     private String descricao;
+    @Enumerated(EnumType.STRING)
     private StatusConsulta status;
     @ManyToOne
     private Medico medico;
